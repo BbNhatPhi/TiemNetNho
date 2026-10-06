@@ -116,5 +116,12 @@ export default class CryptoScene extends Phaser.Scene {
         }
     });
   }
+
+  update(time, delta) {
+      if (this.gameScene && this.gameScene.stats && this.gameScene.stats.crypto) {
+          this.stats = this.gameScene.stats;
+          this.updateUI();
+      }
+  }
 }
 

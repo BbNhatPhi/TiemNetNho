@@ -1077,24 +1077,37 @@ export default class GameScene extends Phaser.Scene {
         
         if (this.miningAccumulator >= 2000) {
           this.miningAccumulator -= 2000;
-          let miningIncome = 0;
+          let totalValueMined = 0;
+          
+          if (!this.stats.crypto) {
+              this.stats.crypto = { balance: { BTC: 0, ETH: 0, DOGE: 0 }, selectedCoin: 'BTC' };
+          }
+          if (!this.stats.cryptoPrices) {
+              this.stats.cryptoPrices = { BTC: 1000000, ETH: 80000, DOGE: 2000 };
+          }
+          
+          const coin = this.stats.crypto.selectedCoin;
+          const price = this.stats.cryptoPrices[coin];
+          const colors = { BTC: '#f1c40f', ETH: '#9b59b6', DOGE: '#e67e22' };
+          const symbols = { BTC: '₿', ETH: 'Ξ', DOGE: 'Ð' };
           
           this.pcs.forEach(pc => {
             if (pc.state === PC_STATES.READY) {
               const tickEarn = 150 * (pc.tier || 1) * miningLevel;
-              miningIncome += tickEarn;
+              totalValueMined += tickEarn;
               
               if (Math.random() < 0.4) {
-                  const floatText = this.add.text(pc.x, pc.y - 30, '+₿', { font: 'bold 16px Nunito', fill: '#f1c40f' }).setOrigin(0.5);
+                  const floatText = this.add.text(pc.x, pc.y - 30, `+${symbols[coin]}`, { font: 'bold 16px Nunito', fill: colors[coin] }).setOrigin(0.5);
                   this.layerUI.add(floatText);
                   this.tweens.add({ targets: floatText, y: pc.y - 50, alpha: 0, duration: 1000, onComplete: () => floatText.destroy() });
               }
             }
           });
           
-          if (miningIncome > 0) {
-            this.economy.addMoney(miningIncome);
-            this.stats.cryptoMined = (this.stats.cryptoMined || 0) + miningIncome;
+          if (totalValueMined > 0) {
+            const amountMined = totalValueMined / price;
+            this.stats.crypto.balance[coin] += amountMined;
+            this.stats.cryptoMined = (this.stats.cryptoMined || 0) + totalValueMined;
           }
         }
       }
