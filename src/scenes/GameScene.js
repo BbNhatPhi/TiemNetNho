@@ -580,9 +580,9 @@ export default class GameScene extends Phaser.Scene {
       this.visualUpgradeObjs.push(fridge, fridgeGlass);
     }
     if (this.upgrades.includes('food_snack')) {
-      const snackStand = this.add.rectangle(shopX + 920, shopY + 225, 50, 40, 0xffddaa, 1).setOrigin(0.5);
+      const snackStand = this.add.rectangle(shopX + 960, shopY + 225, 50, 40, 0xffddaa, 1).setOrigin(0.5);
       snackStand.setStrokeStyle(2, 0xaa7744);
-      const fries = this.add.text(shopX + 920, shopY + 220, '🍟', { fontSize: '20px' }).setOrigin(0.5);
+      const fries = this.add.text(shopX + 960, shopY + 220, '🍟', { fontSize: '20px' }).setOrigin(0.5);
       this.layerFurniture.add([snackStand, fries]);
       this.visualUpgradeObjs.push(snackStand, fries);
     }
