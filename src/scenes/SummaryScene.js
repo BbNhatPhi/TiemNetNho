@@ -29,7 +29,7 @@ export default class SummaryScene extends Phaser.Scene {
     this.modal.alpha = 0;
     this.tweens.add({ targets: this.modal, y: modalY, alpha: 1, duration: 400, ease: 'Back.easeOut' });
 
-    const bg = this.add.nineslice(0, 0, 'ui_panel', 0, modalWidth, modalHeight, 32, 32, 32, 32);
+    const bg = this.add.nineslice(0, 0, 'ui_panel', 0, modalWidth, modalHeight, 32, 32, 32, 32).setInteractive();
 
     const title = this.add.text(0, -modalHeight / 2 + 40, `📋 TỔNG KẾT NGÀY ${this.day}`, {
       font: '900 28px Nunito', fill: '#c25953'

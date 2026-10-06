@@ -40,7 +40,7 @@ export default class KitchenScene extends Phaser.Scene {
 
     const panelW = 740;
     const panelH = 500;
-    this.add.nineslice(width/2, height/2, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32);
+    this.add.nineslice(width/2, height/2, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32).setInteractive();
 
     const closeBtn = this.add.text(width/2 + panelW/2 - 40, height/2 - panelH/2 + 35, '✖', {
         font: '900 24px Arial', fill: '#c25953'

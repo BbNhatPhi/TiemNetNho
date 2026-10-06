@@ -32,7 +32,7 @@ export default class ShopScene extends Phaser.Scene {
     this.tweens.add({ targets: this.modal, y: modalY, alpha: 1, duration: 300, ease: 'Back.easeOut' });
 
     // Background NineSlice
-    const bg = this.add.nineslice(0, 0, 'ui_panel', 0, modalWidth, modalHeight, 24, 24, 24, 24);
+    const bg = this.add.nineslice(0, 0, 'ui_panel', 0, modalWidth, modalHeight, 24, 24, 24, 24).setInteractive();
     
     // Header
     const title = this.add.text(-modalWidth/2 + 30, -modalHeight/2 + 25, '🛒 CỬA HÀNG', { fontFamily: 'Nunito', fontSize: '28px', color: '#4a3b32', fontStyle: 'bold' }).setOrigin(0, 0.5);

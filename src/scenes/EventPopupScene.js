@@ -27,7 +27,7 @@ export default class EventPopupScene extends Phaser.Scene {
     this.tweens.add({ targets: this.modal, y: modalY, alpha: 1, duration: 300, ease: 'Back.easeOut' });
 
     // BG
-    const bg = this.add.nineslice(0, 0, 'ui_panel', 0, modalWidth, modalHeight, 32, 32, 32, 32).setOrigin(0);
+    const bg = this.add.nineslice(0, 0, 'ui_panel', 0, modalWidth, modalHeight, 32, 32, 32, 32).setOrigin(0).setInteractive();
 
     const eventName = this.event?.name || 'Sự kiện';
     const eventDesc = this.event?.description || '';

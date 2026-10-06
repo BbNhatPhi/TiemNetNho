@@ -27,7 +27,7 @@ export default class CryptoScene extends Phaser.Scene {
     
     const panelW = 800;
     const panelH = 500;
-    this.add.nineslice(width/2, height/2, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32);
+    this.add.nineslice(width/2, height/2, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32).setInteractive();
 
     this.add.text(width/2, height/2 - 210, '📈 SÀN GIAO DỊCH CRYPTO', { font: '900 28px Nunito', fill: '#c25953' }).setOrigin(0.5);
 

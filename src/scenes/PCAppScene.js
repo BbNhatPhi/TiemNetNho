@@ -26,7 +26,7 @@ export default class PCAppScene extends Phaser.Scene {
     // Panel
     const panelW = 420;
     const panelH = 320;
-    const panel = this.add.nineslice(width / 2, height / 2, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32);
+    const panel = this.add.nineslice(width / 2, height / 2, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32).setInteractive();
 
     const title = this.add.text(width / 2, height / 2 - 130, `💻 MÁY PC #${this.pc.id + 1}`, {
       font: '800 24px Nunito', fill: '#4a3b32'

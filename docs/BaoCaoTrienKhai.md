@@ -64,3 +64,4 @@ CREATE POLICY "Users can update their own save"
 - **Thử nghiệm Cảm ứng (Touch) thực tế:** Các thao tác spam-click ở bếp gas đôi khi bị "dblclick" zoom màn hình ở các trình duyệt iOS cũ, cần kiểm chứng thực tế xem lệnh meta chặn zoom (`user-scalable=no`) có hoạt động chính xác chưa.
 - **Kích thước font chữ và độ nhạy nút:** Một số nút điều hướng chuyển trang trong PCManagement và Cửa hàng (`◀ TRƯỚC / SAU ▶`) có thể hơi khó bấm nếu ngón tay người dùng to. Nên đánh giá lại trên thiết bị có độ phân giải <375px.
 - **Bàn phím ảo:** Form đăng nhập HTML khi focus có thể đẩy game lên (layout shift) ở Android/iOS. Tuy không ảnh hưởng vì đang ở Modal Đăng nhập, nhưng cần test cảm giác thực tế.
+

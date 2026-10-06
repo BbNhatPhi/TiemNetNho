@@ -30,7 +30,7 @@ export default class PCManagementScene extends Phaser.Scene {
     this.panelH = panelH;
     this.mainPanel = this.add.container(width / 2, height / 2);
 
-    const panelBg = this.add.nineslice(0, 0, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32);
+    const panelBg = this.add.nineslice(0, 0, 'ui_panel', 0, panelW, panelH, 32, 32, 32, 32).setInteractive();
     this.mainPanel.add(panelBg);
 
     // Title
@@ -243,7 +243,7 @@ export default class PCManagementScene extends Phaser.Scene {
 
     this.upgradePanel = this.add.container(width / 2, height / 2);
 
-    const panelBg = this.add.nineslice(0, 0, 'ui_panel', 0, 780, 520, 32, 32, 32, 32);
+    const panelBg = this.add.nineslice(0, 0, 'ui_panel', 0, 780, 520, 32, 32, 32, 32).setInteractive();
     this.upgradePanel.add(panelBg);
 
     // Title & Info
