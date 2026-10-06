@@ -1237,7 +1237,7 @@ export default class GameScene extends Phaser.Scene {
               if (chosen.type === 'rice') bubbleEmoji = '🍛';
               if (chosen.type === 'snack') bubbleEmoji = '🍟';
               
-              if (chosen.type === 'noodle') {
+              if (chosen.type === 'noodle' || chosen.type === 'rice' || chosen.type === 'snack') {
                   cust.spiceLevel = Phaser.Math.Between(0, cust.data.spiceTolerance || 0);
               }
               if (chosen.type === 'drink') {
@@ -1246,7 +1246,7 @@ export default class GameScene extends Phaser.Scene {
                   cust.drinkIce = [0, 50, 100][Phaser.Math.Between(0, 2)];
                   cust.drinkTopping = ['Không', 'Trân châu trắng', 'Thạch trái cây'][Phaser.Math.Between(0, 2)];
               }
-              const txtStr = chosen.type === 'noodle' ? `${bubbleEmoji} lv${cust.spiceLevel}` : bubbleEmoji;
+              const txtStr = (chosen.type === 'noodle' || chosen.type === 'rice' || chosen.type === 'snack') ? `${bubbleEmoji} lv${cust.spiceLevel}` : bubbleEmoji;
 
               const bubbleTxt = this.add.text(cust.sprite.x + 30, cust.sprite.y - 40, txtStr, { font: 'bold 16px Arial', fill: '#c25953' }).setOrigin(0.5);
               bubble.setInteractive({ useHandCursor: true });
