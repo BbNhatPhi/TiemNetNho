@@ -124,6 +124,17 @@ export default class MenuScene extends Phaser.Scene {
         const btn = this.add.image(width / 2, panelY + 40, 'btn_normal').setTint(0x887e77).setAlpha(0.6);
         this.add.text(width / 2, panelY + 40, '▶ TIẾP TỤC (Chưa có save)', { font: '800 17px Nunito', fill: '#ffffff' }).setOrigin(0.5).setAlpha(0.7);
     }
+    
+    // Cloud sync button
+    createBtn(120, '☁ ĐỒNG BỘ CLOUD', () => {
+        import('../ui/SyncUI').then(({ syncUI }) => {
+            syncUI.show();
+            // If cloud data loaded, we just reload the page to refresh the state or rely on TIẾP TỤC button
+            syncUI.setOnCloudSaveLoaded(() => {
+                window.location.reload(); // Quick way to reload the menu scene with the new save
+            });
+        });
+    });
   }
 }
 

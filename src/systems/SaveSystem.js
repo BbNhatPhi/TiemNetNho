@@ -1,6 +1,17 @@
+import { supabaseService } from '../services/SupabaseService';
+
 export default class SaveSystem {
   static SAVE_KEY = 'tiemnetnho_save';
   static SAVE_VERSION = 2;
+  static isSyncing = false;
+  static lastSyncError = null;
+
+  static initCloud(onAuthStateChangeCallback) {
+      supabaseService.onAuthStateChange = async (event, user) => {
+          if (onAuthStateChangeCallback) onAuthStateChangeCallback(event, user);
+      };
+      supabaseService.init();
+  }
 
   // Validate that a save object contains minimum required fields for a game session
   static isValidGameSave(data) {
@@ -14,7 +25,7 @@ export default class SaveSystem {
   // Migrate older saves to current format
   static migrate(data) {
     if (!data) return null;
-    // v1 saves only had achievements — not a full game save
+    // v1 saves only had achievements – not a full game save
     if (typeof data.money !== 'number') return null;
     // Ensure required arrays exist
     if (!Array.isArray(data.pcs)) data.pcs = [];
@@ -38,11 +49,15 @@ export default class SaveSystem {
     return data;
   }
 
-  static save(gameData) {
+  static save(gameData, triggerCloudSync = true) {
     try {
-      const serializedData = JSON.stringify({ ...gameData, _version: this.SAVE_VERSION });
+      const now = Date.now();
+      const serializedData = JSON.stringify({ ...gameData, _version: this.SAVE_VERSION, updated_at: now });
       localStorage.setItem(this.SAVE_KEY, serializedData);
-      console.log('Game saved successfully');
+      
+      if (triggerCloudSync && supabaseService.user) {
+          this.syncToCloud({ ...gameData, _version: this.SAVE_VERSION, updated_at: now });
+      }
       return true;
     } catch (e) {
       console.error('Save failed', e);
@@ -60,6 +75,36 @@ export default class SaveSystem {
       console.error('Load failed', e);
       return null;
     }
+  }
+
+  static async syncToCloud(data) {
+      if (!supabaseService.user || this.isSyncing) return;
+      this.isSyncing = true;
+      try {
+          const success = await supabaseService.uploadSaveData(data);
+          if (!success) {
+              this.lastSyncError = "Network error";
+          } else {
+              this.lastSyncError = null;
+          }
+      } catch (e) {
+          this.lastSyncError = e.message;
+      }
+      this.isSyncing = false;
+  }
+
+  static async fetchCloudSave() {
+      if (!supabaseService.user) return null;
+      try {
+          const result = await supabaseService.getSaveData();
+          if (result && result.save_data) {
+              return result.save_data;
+          }
+          return null;
+      } catch (e) {
+          console.error(e);
+          return null;
+      }
   }
 
   // Load achievements separately (always safe, never crashes)

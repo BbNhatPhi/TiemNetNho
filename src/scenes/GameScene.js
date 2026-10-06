@@ -604,8 +604,19 @@ export default class GameScene extends Phaser.Scene {
     this.dayText = this.add.text(width / 2 - 50, 40, `📅 Ngày ${this.day}`, style).setOrigin(0.5);
     this.timeText = this.add.text(width / 2 + 120, 40, `🕒 08:00`, style).setOrigin(0.5);
     this.repText = this.add.text(width / 2 + 280, 40, `⭐ ${this.reputation.toFixed(1)}`, { font: '800 22px Nunito', fill: '#e88d72' }).setOrigin(0, 0.5);
-    this.layerUI.add([this.moneyText, this.dayText, this.timeText, this.repText]);
+    
+    const cloudBtn = this.add.text(width / 2 + 370, 40, '☁', { font: '900 24px Nunito', fill: '#5599ff' }).setOrigin(0.5)
+      .setInteractive({ useHandCursor: true });
+    
+    cloudBtn.on('pointerdown', () => {
+        import('../ui/SyncUI').then(({ syncUI }) => {
+            syncUI.show();
+        });
+    });
+
+    this.layerUI.add([this.moneyText, this.dayText, this.timeText, this.repText, cloudBtn]);
   }
+
 
   createBottomUI() {
     const height = this.cameras.main.height;

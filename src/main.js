@@ -40,5 +40,13 @@ class Game extends Phaser.Game {
 
 // Start game when window loads
 window.addEventListener('load', () => {
+  // Initialize Cloud Save System
+  import('./systems/SaveSystem').then((module) => {
+    const SaveSystem = module.default;
+    SaveSystem.initCloud((event, user) => {
+        // Optional: Could trigger UI update if syncUI is visible
+    });
+  });
+  
   const game = new Game();
 });

@@ -60,21 +60,173 @@
         90%, 100% { transform: rotate(0deg); }
       }
       @media screen and (orientation: portrait) and (max-width: 900px) {
-        #orientation-warning {
+        #orientation-warning:not(.dismissed) {
           display: flex;
         }
-        #game-container {
-          display: none;
-        }
+      }
+      .btn-continue {
+        margin-top: 24px;
+        padding: 12px 24px;
+        background-color: #64c48a;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        cursor: pointer;
+      }
+      #auth-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 80000;
+        background: rgba(15, 15, 19, 0.85);
+        justify-content: center;
+        align-items: center;
+        backdrop-filter: blur(4px);
+      }
+      .auth-modal {
+        background: #fff8f2;
+        border: 4px solid #4a3b32;
+        border-radius: 16px;
+        padding: 24px;
+        width: 90%;
+        max-width: 400px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        color: #4a3b32;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      }
+      .auth-modal h2 {
+        margin: 0;
+        color: #c25953;
+        font-weight: 900;
+        text-align: center;
+      }
+      .auth-modal p {
+        margin: 0;
+        font-size: 14px;
+        font-weight: 600;
+        text-align: center;
+      }
+      .auth-input {
+        padding: 12px;
+        border: 2px solid #d5cbbe;
+        border-radius: 8px;
+        font-family: 'Nunito', sans-serif;
+        font-size: 16px;
+        outline: none;
+      }
+      .auth-input:focus {
+        border-color: #e88d72;
+      }
+      .auth-btn-row {
+        display: flex;
+        gap: 12px;
+      }
+      .auth-btn {
+        flex: 1;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        font-size: 16px;
+        cursor: pointer;
+        color: white;
+      }
+      .auth-btn.login { background: #64c48a; }
+      .auth-btn.register { background: #5599ff; }
+      .auth-btn.cancel { background: #aaaaaa; }
+      .auth-btn.logout { background: #ff5555; }
+      .auth-error {
+        color: #ff5555;
+        font-size: 13px;
+        text-align: center;
+        font-weight: 700;
+        min-height: 20px;
+      }
+      
+      /* Status screen */
+      #auth-status-panel, #auth-login-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      #auth-loading {
+        position: absolute;
+        inset: 0;
+        background: rgba(255,248,242,0.8);
+        border-radius: 12px;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        font-weight: 800;
+        color: #c25953;
+        font-size: 18px;
       }
     </style>
   </head>
   <body>
     <div id="orientation-warning">
-      <div class="rotate-phone-icon">📱 ↷</div>
-      <div class="rotate-title">Vui lòng xoay ngang thiết bị</div>
-      <div class="rotate-subtitle">Trải nghiệm Tiệm Net Nhỏ mượt mà và trọn vẹn nhất ở chế độ màn hình ngang (Landscape)!</div>
+      <div class="rotate-phone-icon">📱 ➡️</div>
+      <div class="rotate-title">Gợi ý xoay ngang</div>
+      <div class="rotate-subtitle">Chơi ở màn hình ngang (Landscape) sẽ cho trải nghiệm tốt nhất!</div>
+      <button class="btn-continue" onclick="document.getElementById('orientation-warning').classList.add('dismissed')">Tiếp tục chơi dọc</button>
     </div>
+    
+    <div id="auth-overlay">
+      <div class="auth-modal" style="position: relative;">
+        <h2 id="auth-title">Đồng bộ Cloud</h2>
+        
+        <div id="auth-login-panel">
+          <p>Đăng nhập để đồng bộ save qua các thiết bị.</p>
+          <input type="email" id="auth-email" class="auth-input" placeholder="Email" />
+          <input type="password" id="auth-password" class="auth-input" placeholder="Mật khẩu" />
+          <div class="auth-error" id="auth-error"></div>
+          <div class="auth-btn-row">
+            <button class="auth-btn login" id="btn-auth-login">Đăng nhập</button>
+            <button class="auth-btn register" id="btn-auth-register">Đăng ký</button>
+          </div>
+          <button class="auth-btn cancel" id="btn-auth-cancel">Đóng</button>
+        </div>
+        
+        <div id="auth-status-panel" style="display: none;">
+          <p id="auth-logged-in-text">Đã đăng nhập với ...</p>
+          <p id="auth-sync-status">Trạng thái: Đã đồng bộ</p>
+          <button class="auth-btn register" id="btn-auth-sync">Đồng bộ thủ công</button>
+          <button class="auth-btn logout" id="btn-auth-logout">Đăng xuất</button>
+          <button class="auth-btn cancel" id="btn-auth-close">Đóng</button>
+        </div>
+
+        <div id="auth-loading">Đang tải...</div>
+      </div>
+    </div>
+
+    <!-- Conflict Resolution Modal -->
+    <div id="conflict-overlay" style="display: none; position: fixed; inset: 0; z-index: 80001; background: rgba(15,15,19,0.9); justify-content: center; align-items: center;">
+      <div class="auth-modal">
+        <h2>Xung đột Save</h2>
+        <p>Phát hiện có save trên Cloud và máy hiện tại. Bạn muốn giữ bản nào?</p>
+        <div style="background: #fff; padding: 10px; border-radius: 8px; font-size: 14px;">
+          <strong>Save máy (Local):</strong><br>
+          Ngày: <span id="conflict-local-day"></span> | Tiền: <span id="conflict-local-money"></span><br>
+          <span style="color: #666" id="conflict-local-time"></span>
+        </div>
+        <div style="background: #fff; padding: 10px; border-radius: 8px; font-size: 14px;">
+          <strong>Save Cloud:</strong><br>
+          Ngày: <span id="conflict-cloud-day"></span> | Tiền: <span id="conflict-cloud-money"></span><br>
+          <span style="color: #666" id="conflict-cloud-time"></span>
+        </div>
+        <div class="auth-btn-row" style="margin-top: 10px;">
+          <button class="auth-btn login" id="btn-keep-local">Giữ máy (Local)</button>
+          <button class="auth-btn register" id="btn-keep-cloud">Giữ Cloud</button>
+        </div>
+      </div>
+    </div>
+
     <div id="game-container"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
