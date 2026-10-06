@@ -10,22 +10,27 @@ class SupabaseService {
         this.onAuthStateChange = null;
     }
 
-    init(callback) {
+    async init(callback) {
         if (!this.client) {
             console.warn("Supabase credentials not found in env.");
             if (callback) callback(null);
-            return;
+            return null;
         }
         
-        this.client.auth.getSession().then(({ data: { session } }) => {
+        try {
+            const { data: { session } } = await this.client.auth.getSession();
             this.user = session?.user || null;
             if (callback) callback(this.user);
-        });
+        } catch (e) {
+            console.error("Auth session error:", e);
+        }
 
         this.client.auth.onAuthStateChange((event, session) => {
             this.user = session?.user || null;
             if (this.onAuthStateChange) this.onAuthStateChange(event, this.user);
         });
+
+        return this.user;
     }
 
     async signUp(email, password) {

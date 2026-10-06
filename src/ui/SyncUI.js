@@ -153,13 +153,14 @@ export class SyncUI {
     }
 
     async checkForConflicts() {
+        return new Promise(async (resolve) => {
         const localData = SaveSystem.load();
         const cloudData = await SaveSystem.fetchCloudSave();
 
         if (localData && cloudData && localData.updated_at && cloudData.updated_at) {
             if (localData.updated_at === cloudData.updated_at) {
                 this.updateUI();
-                return;
+                return resolve();
             }
 
             this.overlay.style.display = 'none';
@@ -187,6 +188,7 @@ export class SyncUI {
                 this.loadingPanel.style.display = 'flex';
                 await SaveSystem.syncToCloud(localData);
                 this.updateUI();
+                resolve();
             });
 
             newKeepCloud.addEventListener('click', () => {
@@ -201,6 +203,7 @@ export class SyncUI {
 
                 this.show();
                 this.updateUI();
+                resolve();
             });
 
         } else if (cloudData && !localData) {
@@ -209,12 +212,16 @@ export class SyncUI {
                 this.onCloudSaveLoadedCallback(cloudData);
             }
             this.updateUI();
+            resolve();
         } else if (localData && !cloudData) {
             await SaveSystem.syncToCloud(localData);
             this.updateUI();
+            resolve();
         } else {
             this.updateUI();
+            resolve();
         }
+        });
     }
 }
 

@@ -4,13 +4,14 @@ export default class SaveSystem {
   static SAVE_KEY = 'tiemnetnho_save';
   static SAVE_VERSION = 2;
   static isSyncing = false;
+  static pendingSyncData = null;
   static lastSyncError = null;
 
-  static initCloud(onAuthStateChangeCallback) {
+  static async initCloud(onAuthStateChangeCallback) {
       supabaseService.onAuthStateChange = async (event, user) => {
           if (onAuthStateChangeCallback) onAuthStateChangeCallback(event, user);
       };
-      supabaseService.init();
+      return await supabaseService.init();
   }
 
   // Validate that a save object contains minimum required fields for a game session
@@ -25,7 +26,7 @@ export default class SaveSystem {
   // Migrate older saves to current format
   static migrate(data) {
     if (!data) return null;
-    // v1 saves only had achievements – not a full game save
+    // v1 saves only had achievements ?" not a full game save
     if (typeof data.money !== 'number') return null;
     // Ensure required arrays exist
     if (!Array.isArray(data.pcs)) data.pcs = [];
@@ -78,7 +79,13 @@ export default class SaveSystem {
   }
 
   static async syncToCloud(data) {
-      if (!supabaseService.user || this.isSyncing) return;
+      if (!supabaseService.user) return;
+      
+      if (this.isSyncing) {
+          this.pendingSyncData = data;
+          return;
+      }
+      
       this.isSyncing = true;
       try {
           const success = await supabaseService.uploadSaveData(data);
@@ -90,7 +97,14 @@ export default class SaveSystem {
       } catch (e) {
           this.lastSyncError = e.message;
       }
+      
       this.isSyncing = false;
+      
+      if (this.pendingSyncData) {
+          const nextData = this.pendingSyncData;
+          this.pendingSyncData = null;
+          this.syncToCloud(nextData);
+      }
   }
 
   static async fetchCloudSave() {

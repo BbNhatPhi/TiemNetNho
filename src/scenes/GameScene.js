@@ -605,6 +605,9 @@ export default class GameScene extends Phaser.Scene {
     cloudBtn.on('pointerdown', () => {
         import('../ui/SyncUI').then(({ syncUI }) => {
             syncUI.show();
+            syncUI.setOnCloudSaveLoaded(() => {
+                window.location.reload();
+            });
         });
     });
 
