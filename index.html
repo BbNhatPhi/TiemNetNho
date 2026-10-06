@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Tiệm Net Nhỏ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Mali:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <style>
+      body, html {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #0f0f13;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        font-family: 'Nunito', sans-serif;
+      }
+      #game-container {
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+      }
+      #orientation-warning {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: #2b211b;
+        color: #fff8f2;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        font-family: 'Nunito', sans-serif;
+      }
+      .rotate-phone-icon {
+        font-size: 56px;
+        margin-bottom: 16px;
+        animation: rotatePhone 2s infinite ease-in-out;
+      }
+      .rotate-title {
+        font-size: 22px;
+        font-weight: 900;
+        color: #e88d72;
+        margin-bottom: 8px;
+      }
+      .rotate-subtitle {
+        font-size: 15px;
+        font-weight: 600;
+        color: #d5cbbe;
+      }
+      @keyframes rotatePhone {
+        0%, 15% { transform: rotate(0deg); }
+        50%, 65% { transform: rotate(90deg); }
+        90%, 100% { transform: rotate(0deg); }
+      }
+      @media screen and (orientation: portrait) and (max-width: 900px) {
+        #orientation-warning {
+          display: flex;
+        }
+        #game-container {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="orientation-warning">
+      <div class="rotate-phone-icon">📱 ↷</div>
+      <div class="rotate-title">Vui lòng xoay ngang thiết bị</div>
+      <div class="rotate-subtitle">Trải nghiệm Tiệm Net Nhỏ mượt mà và trọn vẹn nhất ở chế độ màn hình ngang (Landscape)!</div>
+    </div>
+    <div id="game-container"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

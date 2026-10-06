@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 140 64" width="140" height="64">
+  <defs>
+    <linearGradient id="matGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#d66861"/>
+      <stop offset="100%" stop-color="#b34944"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Soft shadow on the floor -->
+  <rect x="6" y="8" width="128" height="52" rx="14" fill="#4a3b32" opacity="0.25"/>
+
+  <!-- Outer mat rim with woven border -->
+  <rect x="4" y="4" width="132" height="52" rx="14" fill="#8a342f" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Inner mat surface -->
+  <rect x="9" y="9" width="122" height="42" rx="10" fill="url(#matGrad)" stroke="#eed5c4" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <!-- Decorative corner flourishes -->
+  <circle cx="16" cy="16" r="2" fill="#ffeaa7"/>
+  <circle cx="124" cy="16" r="2" fill="#ffeaa7"/>
+  <circle cx="16" cy="44" r="2" fill="#ffeaa7"/>
+  <circle cx="124" cy="44" r="2" fill="#ffeaa7"/>
+
+  <!-- Mat Text: XIN CHÀO • TIỆM NET -->
+  <text x="70" y="32" font-family="'Nunito', 'Segoe UI', sans-serif" font-weight="900" font-size="16" fill="#fff8f2" text-anchor="middle" letter-spacing="2">XIN CHÀO</text>
+  <text x="70" y="44" font-family="'Nunito', 'Segoe UI', sans-serif" font-weight="800" font-size="8.5" fill="#f7d794" text-anchor="middle" letter-spacing="1.5">★ TIỆM NET NHỎ ★</text>
+</svg>

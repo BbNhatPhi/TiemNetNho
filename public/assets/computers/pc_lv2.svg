@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+    
+  <!-- Monitor Base -->
+  <path d="M 30 60 L 50 60 L 45 40 L 35 40 Z" fill="#4a3b32" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <!-- Monitor -->
+  <rect x="8" y="8" width="64" height="42" rx="4" fill="#4a3b32" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <rect x="12" y="12" width="56" height="34" rx="2" fill="#34495e" />
+  <!-- PC Case -->
+  <rect x="68" y="20" width="10" height="30" rx="2" fill="#4a3b32" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <!-- Keyboard -->
+  <rect x="15" y="65" width="40" height="12" rx="2" fill="#4a3b32" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <rect x="60" y="65" width="8" height="12" rx="4" fill="#4a3b32" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+
+  </svg>

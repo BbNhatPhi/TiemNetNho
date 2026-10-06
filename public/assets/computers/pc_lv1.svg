@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+    
+  <!-- Monitor Base -->
+  <path d="M 30 60 L 50 60 L 45 40 L 35 40 Z" fill="#d5d8dc" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <!-- Monitor -->
+  <rect x="10" y="10" width="60" height="40" rx="4" fill="#ffffff" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <rect x="14" y="14" width="52" height="32" rx="2" fill="#34495e" />
+  <!-- Keyboard -->
+  <rect x="15" y="65" width="40" height="12" rx="2" fill="#d5d8dc" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <!-- Mouse -->
+  <rect x="60" y="65" width="8" height="12" rx="4" fill="#d5d8dc" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+
+  </svg>

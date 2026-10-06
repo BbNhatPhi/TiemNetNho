@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+    
+  <rect width="128" height="128" fill="#faf6f0" />
+  <rect x="0" y="96" width="128" height="32" fill="#e6d5c3" />
+  <path d="M 0 96 L 128 96" stroke="#c9b7a3" stroke-width="4"/>
+  <!-- Cute wall strip -->
+  <rect x="0" y="40" width="128" height="8" fill="#85a98f" />
+
+  </svg>

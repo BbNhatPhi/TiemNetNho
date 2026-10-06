@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 110" width="180" height="110">
+  <defs>
+    <!-- Soft gradients for depth -->
+    <linearGradient id="counterFront" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#8ba893"/>
+      <stop offset="100%" stop-color="#64856d"/>
+    </linearGradient>
+    <linearGradient id="woodTrim" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#e8cfb5"/>
+      <stop offset="100%" stop-color="#c9aa8b"/>
+    </linearGradient>
+    <linearGradient id="glassShelves" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#d9e9ec" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="screenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34495e"/>
+      <stop offset="100%" stop-color="#1a252f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Ground shadow -->
+  <ellipse cx="90" cy="102" rx="84" ry="7" fill="#4a3b32" opacity="0.2"/>
+
+  <!-- Counter Base Structure -->
+  <!-- Back / side depth -->
+  <rect x="6" y="38" width="168" height="64" rx="14" fill="#4f6e57"/>
+  <!-- Front main counter body -->
+  <rect x="6" y="34" width="168" height="64" rx="14" fill="url(#counterFront)" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round"/>
+
+  <!-- Counter Wooden Trim / Base Plinth -->
+  <rect x="14" y="86" width="152" height="8" rx="3" fill="#4a3b32" opacity="0.2"/>
+
+  <!-- Front Display Glass Showcase (Snacks & Candies) -->
+  <rect x="18" y="44" width="86" height="42" rx="8" fill="#eaf4f4" stroke="#4a3b32" stroke-width="3"/>
+  <rect x="20" y="46" width="82" height="38" rx="6" fill="url(#glassShelves)"/>
+  
+  <!-- Showcase snack items inside -->
+  <!-- Chip bag 1 (yellow snack - Oishi) -->
+  <rect x="24" y="52" width="14" height="18" rx="3" fill="#f7b731" stroke="#4a3b32" stroke-width="1.5" transform="rotate(-6 24 52)"/>
+  <rect x="27" y="57" width="8" height="6" rx="1" fill="#eb3b5a"/>
+  <!-- Chip bag 2 (red snack - Cay Cay) -->
+  <rect x="42" y="50" width="14" height="19" rx="3" fill="#fc5c65" stroke="#4a3b32" stroke-width="1.5" transform="rotate(4 42 50)"/>
+  <circle cx="49" cy="59" r="4" fill="#fed330"/>
+  <!-- Chip bag 3 (green seaweed snack) -->
+  <rect x="60" y="53" width="14" height="18" rx="3" fill="#20bf6b" stroke="#4a3b32" stroke-width="1.5"/>
+  <!-- Drink cans in showcase -->
+  <rect x="78" y="54" width="9" height="15" rx="3" fill="#eb3b5a" stroke="#4a3b32" stroke-width="1.5"/>
+  <rect x="89" y="55" width="9" height="14" rx="3" fill="#fa8231" stroke="#4a3b32" stroke-width="1.5"/>
+  <!-- Glass shine reflection -->
+  <polygon points="22,48 45,48 30,82 22,82" fill="#ffffff" opacity="0.5"/>
+
+  <!-- Cashier Drawers (Right side) -->
+  <rect x="114" y="44" width="50" height="18" rx="4" fill="#7a9b83" stroke="#4a3b32" stroke-width="2.5"/>
+  <rect x="133" y="51" width="12" height="4" rx="2" fill="#4a3b32"/>
+  <rect x="114" y="68" width="50" height="18" rx="4" fill="#7a9b83" stroke="#4a3b32" stroke-width="2.5"/>
+  <rect x="133" y="75" width="12" height="4" rx="2" fill="#4a3b32"/>
+
+  <!-- Countertop (Wide thick beveled slab) -->
+  <rect x="2" y="24" width="176" height="16" rx="8" fill="#c9aa8b"/>
+  <rect x="2" y="22" width="176" height="14" rx="8" fill="url(#woodTrim)" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round"/>
+  <!-- Top surface highlight line -->
+  <line x1="12" y1="26" x2="168" y2="26" stroke="#ffffff" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- EQUIPMENT ON COUNTER -->
+
+  <!-- 1. Billing Master PC (Server CSM / GCafe) - Left Side -->
+  <!-- Monitor stand -->
+  <rect x="28" y="19" width="12" height="7" fill="#8c7a6b" stroke="#4a3b32" stroke-width="2"/>
+  <ellipse cx="34" cy="25" rx="10" ry="3" fill="#4a3b32"/>
+  <!-- Monitor frame -->
+  <rect x="14" y="2" width="40" height="25" rx="4" fill="#4a3b32"/>
+  <rect x="16" y="4" width="36" height="21" rx="3" fill="url(#screenGrad)"/>
+  <!-- Screen contents: Net Cafe Billing Software -->
+  <rect x="18" y="6" width="32" height="4" fill="#20bf6b" opacity="0.9"/>
+  <!-- Mini PC grid on screen -->
+  <rect x="18" y="12" width="5" height="5" rx="1" fill="#00d2d3"/>
+  <rect x="25" y="12" width="5" height="5" rx="1" fill="#00d2d3"/>
+  <rect x="32" y="12" width="5" height="5" rx="1" fill="#ff7675"/>
+  <rect x="39" y="12" width="5" height="5" rx="1" fill="#00d2d3"/>
+  <rect x="18" y="18" width="5" height="5" rx="1" fill="#00d2d3"/>
+  <rect x="25" y="18" width="5" height="5" rx="1" fill="#55efc4"/>
+  <rect x="32" y="18" width="5" height="5" rx="1" fill="#00d2d3"/>
+  <!-- Mini keyboard in front of monitor -->
+  <rect x="16" y="27" width="26" height="5" rx="2" fill="#dcdde1" stroke="#4a3b32" stroke-width="1.5"/>
+
+  <!-- 2. Cash Register / POS & Barcode Scanner - Center -->
+  <!-- Register body -->
+  <polygon points="68,26 104,26 101,13 71,13" fill="#e2e8f0" stroke="#4a3b32" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Register screen (angled) -->
+  <rect x="74" y="6" width="24" height="11" rx="2" fill="#2d3436" stroke="#4a3b32" stroke-width="2"/>
+  <rect x="76" y="8" width="20" height="7" rx="1" fill="#55efc4"/>
+  <text x="86" y="14" font-family="monospace" font-size="6" font-weight="bold" fill="#00b894" text-anchor="middle">NET OK</text>
+  <!-- Buttons pad -->
+  <rect x="73" y="17" width="8" height="6" rx="1" fill="#74b9ff"/>
+  <rect x="83" y="17" width="16" height="6" rx="1" fill="#a4b0be"/>
+  <!-- Receipt paper roll sticking out -->
+  <rect x="88" y="24" width="8" height="4" fill="#ffffff" stroke="#4a3b32" stroke-width="1"/>
+
+  <!-- 3. Microphone for Cashier Announcements -->
+  <path d="M 64,28 Q 63,18 60,15" fill="none" stroke="#4a3b32" stroke-width="2.5" stroke-linecap="round"/>
+  <ellipse cx="59" cy="14" rx="3" ry="4" fill="#2d3436" stroke="#4a3b32" stroke-width="1.5"/>
+
+  <!-- 4. Lucky Cat (Maneki-Neko) - Right Side 🐱 -->
+  <!-- Body -->
+  <ellipse cx="148" cy="22" rx="11" ry="10" fill="#ffffff" stroke="#4a3b32" stroke-width="2.5"/>
+  <!-- Ears -->
+  <polygon points="140,15 143,8 147,14" fill="#ffffff" stroke="#4a3b32" stroke-width="2"/>
+  <polygon points="142,13 144,9 146,13" fill="#ff7675"/>
+  <polygon points="150,14 154,8 157,15" fill="#ffffff" stroke="#4a3b32" stroke-width="2"/>
+  <polygon points="151,13 153,9 155,13" fill="#ff7675"/>
+  <!-- Cute cat face -->
+  <circle cx="144" cy="19" r="1.5" fill="#4a3b32"/>
+  <circle cx="152" cy="19" r="1.5" fill="#4a3b32"/>
+  <polygon points="147,21 149,21 148,22.5" fill="#ff7675"/>
+  <path d="M 146,23 Q 148,24.5 150,23" fill="none" stroke="#4a3b32" stroke-width="1.2" stroke-linecap="round"/>
+  <!-- Red collar with gold bell -->
+  <rect x="142" y="24" width="12" height="3" rx="1" fill="#ff4757"/>
+  <circle cx="148" cy="27" r="2.5" fill="#ffd32a" stroke="#4a3b32" stroke-width="1"/>
+  <!-- Waving gold paw -->
+  <ellipse cx="159" cy="16" rx="4" ry="5" fill="#ffd32a" stroke="#4a3b32" stroke-width="2" transform="rotate(20 159 16)"/>
+</svg>

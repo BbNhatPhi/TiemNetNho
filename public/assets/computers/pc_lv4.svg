@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 100" width="120" height="100">
+    
+    <!-- Chair -->
+    <rect x="40" y="60" width="30" height="25" rx="6" fill="#ffffff" stroke="#111" stroke-width="2"/>
+    <rect x="45" y="55" width="20" height="15" rx="4" fill="#222" />
+    
+    <!-- Monitor Stand -->
+    <rect x="52" y="40" width="6" height="10" fill="#222" />
+    <rect x="45" y="48" width="20" height="4" fill="#333" />
+    
+    <!-- Monitor -->
+    <rect x="35" y="15" width="40" height="28" rx="2" fill="#111" stroke="#333" stroke-width="2" />
+    <rect x="37" y="17" width="36" height="24" rx="1" fill="#ff00ff" />
+    <!-- Screen glow -->
+    <rect x="37" y="17" width="36" height="10" fill="#ffffff" opacity="0.2" />
+
+    <!-- Keyboard & Mouse -->
+    <rect x="35" y="52" width="25" height="6" rx="1" fill="#bbb" />
+    <rect x="65" y="53" width="6" height="8" rx="3" fill="#bbb" />
+    
+    <!-- PC Case -->
+    <rect x="85" y="25" width="20" height="35" rx="2" fill="#ffffff" stroke="#111" stroke-width="2" />
+    <rect x="88" y="28" width="14" height="29" fill="#111" />
+                <!-- RGB Fans -->
+                <circle cx="95" cy="35" r="5" fill="#00ffff" />
+                <circle cx="95" cy="48" r="5" fill="#00ffff" />
+  
+  </svg>

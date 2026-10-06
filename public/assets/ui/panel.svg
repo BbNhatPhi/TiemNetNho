@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+    
+  <rect x="4" y="8" width="120" height="116" rx="24" fill="#c9b7a3" />
+  <rect x="4" y="4" width="120" height="116" rx="24" fill="#fff8f2" stroke="#4a3b32" stroke-width="4" stroke-linejoin="round" stroke-linecap="round" />
+  <!-- Inner subtle border -->
+  <rect x="12" y="12" width="104" height="100" rx="16" fill="none" stroke="#e6d5c3" stroke-width="4" />
+
+  </svg>

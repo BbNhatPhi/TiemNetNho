@@ -1,0 +1,30 @@
+export const GAME_CONSTANTS = {
+  STARTING_MONEY: 5000000,
+  STARTING_REPUTATION: 0.1, // 0 to 5.0
+  DAY_DURATION_MS: 300000, // 5 minutes real time = 1 day in game
+  MAX_PCS: 15
+};
+
+export const PC_STATES = {
+  OFF: 'OFF',
+  BOOTING: 'BOOTING',
+  READY: 'READY',
+  IDLE: 'IDLE', // Keep for compatibility if needed, though READY is better
+  OCCUPIED: 'OCCUPIED',
+  ERROR: 'ERROR',
+  UPDATING: 'UPDATING',
+  OVERHEATED: 'OVERHEATED',
+  BROKEN: 'BROKEN',
+  MAINTENANCE: 'MAINTENANCE',
+  DIRTY: 'DIRTY'
+};
+
+export const CUSTOMER_STATES = {
+  ENTERING: 'ENTERING',
+  WAITING: 'WAITING',
+  LOOKING_FOR_PC: 'LOOKING_FOR_PC',
+  PLAYING: 'PLAYING',
+  REQUESTING: 'REQUESTING',
+  PAYING: 'PAYING',
+  LEAVING: 'LEAVING'
+};

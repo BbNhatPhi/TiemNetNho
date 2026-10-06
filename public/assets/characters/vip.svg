@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 64" width="48" height="64">
+    
+    <!-- Shadow -->
+    <ellipse cx="24" cy="60" rx="16" ry="6" fill="#000000" opacity="0.3" />
+    <!-- Legs -->
+    <rect x="18" y="45" width="5" height="15" rx="2" fill="#ffffff" />
+    <rect x="25" y="45" width="5" height="15" rx="2" fill="#ffffff" />
+    <!-- Shoes -->
+    <rect x="16" y="56" width="7" height="5" rx="2" fill="#222" />
+    <rect x="25" y="56" width="7" height="5" rx="2" fill="#222" />
+    <!-- Body -->
+    <rect x="14" y="25" width="20" height="22" rx="6" fill="#e67e22" />
+    <!-- Collar/Detail -->
+    <rect x="14" y="25" width="20" height="8" fill="#ffffff" opacity="0.2" />
+    <!-- Head -->
+    <rect x="15" y="10" width="18" height="18" rx="6" fill="#ffcdb2" />
+    <!-- Hair -->
+    <path d="M 13 16 Q 24 5 35 16 L 35 10 Q 24 -2 13 10 Z" fill="#f1c40f" />
+    <rect x="13" y="10" width="22" height="8" rx="4" fill="#f1c40f" />
+    <!-- Eyes -->
+    <circle cx="19" cy="19" r="2" fill="#111" />
+    <circle cx="29" cy="19" r="2" fill="#111" />
+  
+  </svg>
