@@ -13,6 +13,8 @@ import CashierScene from './scenes/CashierScene';
 import PCAppScene from './scenes/PCAppScene';
 import TutorialScene from './scenes/TutorialScene';
 import CryptoScene from './scenes/CryptoScene';
+import SaveSystem from './systems/SaveSystem';
+import { syncUI } from './ui/SyncUI';
 
 class Game extends Phaser.Game {
   constructor() {
@@ -41,8 +43,8 @@ class Game extends Phaser.Game {
 // Start game when window loads
 window.addEventListener('load', async () => {
   // Initialize Cloud Save System
-  const { default: SaveSystem } = await import('./systems/SaveSystem');
-  const { syncUI } = await import('./ui/SyncUI');
+  
+  
   
   await SaveSystem.initCloud((event, user) => {
       syncUI.updateUI();

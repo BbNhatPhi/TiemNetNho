@@ -257,7 +257,7 @@ export default class ShopScene extends Phaser.Scene {
     // Buy Button
     const btnW = 140;
     const btnH = 50;
-    const btnX = 475;
+    const btnX = 540;
     const btnY = y + 35;
 
     let btnColor = 0x64c48a;
@@ -349,7 +349,7 @@ export default class ShopScene extends Phaser.Scene {
       // Buy Button
       const btnW = 120;
       const btnH = 50;
-      const btnX = 490;
+      const btnX = 550;
       const btnY = y + 30;
 
       let btnColor = 0x64c48a;
