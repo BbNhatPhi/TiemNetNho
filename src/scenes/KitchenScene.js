@@ -1057,11 +1057,11 @@ export default class KitchenScene extends Phaser.Scene {
     this.add.text(ticketX, ticketY - 25, `${recipe.name.toUpperCase()}`, { font: '900 18px Nunito', fill: '#4a3b32', align: 'center', wordWrap: { width: 200 } }).setOrigin(0.5);
     
     let ticketSpiceTxt = this.customer ? `Yêu cầu: Cấp ${this.targetSpice} cay` : `Yêu cầu: Tùy ý`;
-    if (recipe.id === 'snack_banh_mi') ticketSpiceTxt = 'Bánh mì đặc ruột';
-    else if (recipe.id === 'snack_ca_vien') ticketSpiceTxt = 'Cá viên chiên giòn';
-    else if (recipe.id === 'snack_khoai_tay') ticketSpiceTxt = 'Khoai chiên giòn rụm';
-    else if (recipe.type === 'rice') ticketSpiceTxt = 'Cơm chiên nóng hổi';
-    this.add.text(ticketX, ticketY + 25, ticketSpiceTxt, { font: 'bold 15px Nunito', fill: '#6b5c52' }).setOrigin(0.5);
+    if (recipe.id === 'snack_banh_mi') ticketSpiceTxt = 'Bánh mì đặc ruột\n' + ticketSpiceTxt;
+    else if (recipe.id === 'snack_ca_vien') ticketSpiceTxt = 'Cá viên chiên giòn\n' + ticketSpiceTxt;
+    else if (recipe.id === 'snack_khoai_tay') ticketSpiceTxt = 'Khoai chiên giòn rụm\n' + ticketSpiceTxt;
+    else if (recipe.type === 'rice') ticketSpiceTxt = 'Cơm chiên nóng hổi\n' + ticketSpiceTxt;
+    this.add.text(ticketX, ticketY + 25, ticketSpiceTxt, { font: 'bold 15px Nunito', fill: '#6b5c52', align: 'center' }).setOrigin(0.5);
 
     // Bowl / Plate Graphics
     const bowlX = width/2 - 220;
