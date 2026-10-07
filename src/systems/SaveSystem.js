@@ -78,33 +78,34 @@ export default class SaveSystem {
     }
   }
 
+  static syncQueue = Promise.resolve();
+
   static async syncToCloud(data) {
       if (!supabaseService.user) return;
       
-      if (this.isSyncing) {
-          this.pendingSyncData = data;
-          return;
-      }
+      this.pendingSyncData = data;
+      if (this.isSyncing) return this.syncQueue;
       
       this.isSyncing = true;
-      try {
-          const success = await supabaseService.uploadSaveData(data);
-          if (!success) {
-              this.lastSyncError = "Network error";
-          } else {
-              this.lastSyncError = null;
+      this.syncQueue = new Promise(async (resolve) => {
+          while (this.pendingSyncData) {
+              const dataToUpload = this.pendingSyncData;
+              this.pendingSyncData = null;
+              try {
+                  const success = await supabaseService.uploadSaveData(dataToUpload);
+                  if (success) {
+                      this.lastSyncError = null;
+                  } else {
+                      this.lastSyncError = "Network error";
+                  }
+              } catch (e) {
+                  this.lastSyncError = e.message;
+              }
           }
-      } catch (e) {
-          this.lastSyncError = e.message;
-      }
-      
-      this.isSyncing = false;
-      
-      if (this.pendingSyncData) {
-          const nextData = this.pendingSyncData;
-          this.pendingSyncData = null;
-          this.syncToCloud(nextData);
-      }
+          this.isSyncing = false;
+          resolve();
+      });
+      return this.syncQueue;
   }
 
   static async fetchCloudSave() {

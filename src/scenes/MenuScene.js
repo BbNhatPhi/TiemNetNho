@@ -1,4 +1,5 @@
 import Phaser from 'phaser';
+import { syncUI } from '../ui/SyncUI';
 
 export default class MenuScene extends Phaser.Scene {
   constructor() {
@@ -127,13 +128,12 @@ export default class MenuScene extends Phaser.Scene {
     
     // Cloud sync button
     createBtn(120, '☁ ĐỒNG BỘ CLOUD', () => {
-        import('../ui/SyncUI').then(({ syncUI }) => {
+        
             syncUI.show();
             // If cloud data loaded, we just reload the page to refresh the state or rely on TIẾP TỤC button
             syncUI.setOnCloudSaveLoaded(() => {
                 window.location.reload(); // Quick way to reload the menu scene with the new save
             });
-        });
     });
   }
 }

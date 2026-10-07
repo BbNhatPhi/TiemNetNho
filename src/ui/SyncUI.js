@@ -157,7 +157,10 @@ export class SyncUI {
         const localData = SaveSystem.load();
         const cloudData = await SaveSystem.fetchCloudSave();
 
-        if (localData && cloudData && localData.updated_at && cloudData.updated_at) {
+        const isLocalValid = SaveSystem.isValidGameSave(localData);
+        const isCloudValid = SaveSystem.isValidGameSave(cloudData);
+
+        if (isLocalValid && isCloudValid) {
             if (localData.updated_at === cloudData.updated_at) {
                 this.updateUI();
                 return resolve();
@@ -195,10 +198,17 @@ export class SyncUI {
                 this.conflictOverlay.style.display = 'none';
                 
                 localStorage.setItem(SaveSystem.SAVE_KEY + '_backup', JSON.stringify(localData));
-                SaveSystem.save(cloudData, false);
+                
+                // Merge achievements if local had any
+                let cloudToSave = cloudData;
+                if (localData && localData.achievements) {
+                    const mergedAch = new Set([...(cloudData.achievements || []), ...localData.achievements]);
+                    cloudToSave.achievements = Array.from(mergedAch);
+                }
+                SaveSystem.save(cloudToSave, false);
                 
                 if (this.onCloudSaveLoadedCallback) {
-                    this.onCloudSaveLoadedCallback(cloudData);
+                    this.onCloudSaveLoadedCallback(cloudToSave);
                 }
 
                 this.show();
@@ -206,14 +216,20 @@ export class SyncUI {
                 resolve();
             });
 
-        } else if (cloudData && !localData) {
-            SaveSystem.save(cloudData, false);
+        } else if (isCloudValid && !isLocalValid) {
+            // Local is missing or just achievements. We should merge achievements before overwriting local!
+            let cloudToSave = cloudData;
+            if (localData && localData.achievements) {
+                const mergedAch = new Set([...(cloudData.achievements || []), ...localData.achievements]);
+                cloudToSave.achievements = Array.from(mergedAch);
+            }
+            SaveSystem.save(cloudToSave, false);
             if (this.onCloudSaveLoadedCallback) {
-                this.onCloudSaveLoadedCallback(cloudData);
+                this.onCloudSaveLoadedCallback(cloudToSave);
             }
             this.updateUI();
             resolve();
-        } else if (localData && !cloudData) {
+        } else if (isLocalValid && !isCloudValid) {
             await SaveSystem.syncToCloud(localData);
             this.updateUI();
             resolve();

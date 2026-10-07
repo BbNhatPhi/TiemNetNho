@@ -26,58 +26,6 @@ touch-action: none;
       #game-container {
         box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
       }
-      #orientation-warning {
-        display: none;
-        position: fixed;
-        inset: 0;
-        z-index: 99999;
-        background: #2b211b;
-        color: #fff8f2;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 20px;
-        font-family: 'Nunito', sans-serif;
-      }
-      .rotate-phone-icon {
-        font-size: 56px;
-        margin-bottom: 16px;
-        animation: rotatePhone 2s infinite ease-in-out;
-      }
-      .rotate-title {
-        font-size: 22px;
-        font-weight: 900;
-        color: #e88d72;
-        margin-bottom: 8px;
-      }
-      .rotate-subtitle {
-        font-size: 15px;
-        font-weight: 600;
-        color: #d5cbbe;
-      }
-      @keyframes rotatePhone {
-        0%, 15% { transform: rotate(0deg); }
-        50%, 65% { transform: rotate(90deg); }
-        90%, 100% { transform: rotate(0deg); }
-      }
-      @media screen and (orientation: portrait) and (max-width: 900px) {
-        #orientation-warning:not(.dismissed) {
-          display: flex;
-        }
-      }
-      .btn-continue {
-        margin-top: 24px;
-        padding: 12px 24px;
-        background-color: #64c48a;
-        color: #fff;
-        border: none;
-        border-radius: 8px;
-        font-family: 'Nunito', sans-serif;
-        font-weight: 800;
-        font-size: 16px;
-        cursor: pointer;
-      }
       #auth-overlay {
         display: none;
         position: fixed;
@@ -172,12 +120,7 @@ touch-action: none;
     </style>
   </head>
   <body>
-    <div id="orientation-warning">
-      <div class="rotate-phone-icon">📱 ➡️</div>
-      <div class="rotate-title">Gợi ý xoay ngang</div>
-      <div class="rotate-subtitle">Chơi ở màn hình ngang (Landscape) sẽ cho trải nghiệm tốt nhất!</div>
-      
-    </div>
+    
     
     <div id="auth-overlay">
       <div class="auth-modal" style="position: relative;">

@@ -6,6 +6,7 @@ import EventSystem from '../systems/EventSystem';
 import AchievementSystem from '../systems/AchievementSystem';
 import DailyObjectiveSystem from '../systems/DailyObjectiveSystem';
 import { GAME_CONSTANTS, PC_STATES, CUSTOMER_STATES } from '../utils/constants';
+import { syncUI } from '../ui/SyncUI';
 import { PC_TIERS, PC_PARTS, calculatePCStats } from '../data/computers';
 import { CUSTOMER_TYPES } from '../data/customers';
 import { SHOP_UPGRADES } from '../data/upgrades';
@@ -641,11 +642,9 @@ export default class GameScene extends Phaser.Scene {
     };
     
     createMenuBtn(height/2 - 40, '☁️ Đồng bộ Cloud', () => {
-        import('../ui/SyncUI').then(({ syncUI }) => {
-            syncUI.show();
-            syncUI.setOnCloudSaveLoaded(() => {
-                window.location.reload();
-            });
+        syncUI.show();
+        syncUI.setOnCloudSaveLoaded(() => {
+            window.location.reload();
         });
     });
     
